@@ -12,14 +12,14 @@ export class UsersResolver {
     return this.usersService.create(createUserInput);
   }
 
-  @Query('users')
-  findAll() {
-    return this.usersService.findAll();
+  @Query()
+  async jwt(@Args('email') email: string, @Args('password') password: string) {
+    return this.usersService.getJwt(email, password);
   }
 
-  @Query('user')
-  findOne(@Args('id') id: number) {
-    return this.usersService.findOne(id);
+  @Query()
+  async user(@Args('id') id: string) {
+    return this.usersService.findUser(id);
   }
 
   @Mutation('updateUser')

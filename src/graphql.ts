@@ -86,8 +86,8 @@ export interface IQuery {
     genre(id: string): Nullable<Genre> | Promise<Nullable<Genre>>;
     tracks(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Track>[] | Promise<Nullable<Track>[]>;
     track(id: string): Nullable<Track> | Promise<Nullable<Track>>;
-    users(): Nullable<User>[] | Promise<Nullable<User>[]>;
-    user(id: number): Nullable<User> | Promise<Nullable<User>>;
+    jwt(email: string, password: string): Nullable<JWT> | Promise<Nullable<JWT>>;
+    user(id: string): Nullable<User> | Promise<Nullable<User>>;
 }
 
 export interface IMutation {
@@ -168,7 +168,15 @@ export interface Track {
 }
 
 export interface User {
-    exampleField?: Nullable<number>;
+    id: string;
+    firstName?: Nullable<string>;
+    secondName?: Nullable<string>;
+    password: string;
+    email: string;
+}
+
+export interface JWT {
+    jwt?: Nullable<string>;
 }
 
 type Nullable<T> = T | null;

@@ -1,6 +1,13 @@
 type User {
-  # Example field (placeholder)
-  exampleField: Int
+  id: ID!
+  firstName: String
+  secondName: String
+  password: String!
+  email: String!
+}
+
+type JWT {
+  jwt: String
 }
 
 input CreateUserInput {
@@ -13,8 +20,8 @@ input UpdateUserInput {
 }
 
 type Query {
-  users: [User]!
-  user(id: Int!): User
+  jwt(email: String!, password: String!): JWT
+  user(id: ID!): User
 }
 
 type Mutation {
