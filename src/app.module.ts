@@ -9,6 +9,7 @@ import { GenresModule } from './modules/genres/genres.module';
 import { TracksModule } from './modules/tracks/tracks.module';
 import { BandsModule } from './modules/bands/bands.module';
 import { ArtistsModule } from './modules/artists/artists.module';
+import { AlbumsModule } from './modules/albums/albums.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ArtistsModule } from './modules/artists/artists.module';
     TracksModule,
     BandsModule,
     ArtistsModule,
+    AlbumsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

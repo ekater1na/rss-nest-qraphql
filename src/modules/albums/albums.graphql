@@ -1,0 +1,24 @@
+type Album {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateAlbumInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateAlbumInput {
+  id: Int!
+}
+
+type Query {
+  albums: [Album]!
+  album(id: Int!): Album
+}
+
+type Mutation {
+  createAlbum(createAlbumInput: CreateAlbumInput!): Album!
+  updateAlbum(updateAlbumInput: UpdateAlbumInput!): Album!
+  removeAlbum(id: Int!): Album
+}
