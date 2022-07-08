@@ -10,6 +10,7 @@ import { TracksModule } from './modules/tracks/tracks.module';
 import { BandsModule } from './modules/bands/bands.module';
 import { ArtistsModule } from './modules/artists/artists.module';
 import { AlbumsModule } from './modules/albums/albums.module';
+import { FavouritesModule } from './modules/favourites/favourites.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AlbumsModule } from './modules/albums/albums.module';
     BandsModule,
     ArtistsModule,
     AlbumsModule,
+    FavouritesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

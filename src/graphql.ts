@@ -31,6 +31,14 @@ export interface UpdateBandInput {
     id: number;
 }
 
+export interface CreateFavouritesInput {
+    exampleField?: Nullable<number>;
+}
+
+export interface UpdateFavouritesInput {
+    id: number;
+}
+
 export interface CreateGenreInput {
     exampleField?: Nullable<number>;
 }
@@ -65,6 +73,7 @@ export interface IQuery {
     artist(id: string): Nullable<Artist> | Promise<Nullable<Artist>>;
     bands(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Band>[] | Promise<Nullable<Band>[]>;
     band(id: string): Nullable<Band> | Promise<Nullable<Band>>;
+    favourites(): Nullable<Favourites>[] | Promise<Nullable<Favourites>[]>;
     genres(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Genre>[] | Promise<Nullable<Genre>[]>;
     genre(id: string): Nullable<Genre> | Promise<Nullable<Genre>>;
     tracks(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Track>[] | Promise<Nullable<Track>[]>;
@@ -81,6 +90,9 @@ export interface IMutation {
     createBand(createBandInput: CreateBandInput): Band | Promise<Band>;
     updateBand(updateBandInput: UpdateBandInput): Band | Promise<Band>;
     removeBand(id: number): Nullable<Band> | Promise<Nullable<Band>>;
+    createFavourites(createFavouritesInput: CreateFavouritesInput): Favourites | Promise<Favourites>;
+    updateFavourites(updateFavouritesInput: UpdateFavouritesInput): Favourites | Promise<Favourites>;
+    removeFavourites(id: number): Nullable<Favourites> | Promise<Nullable<Favourites>>;
     createGenre(createGenreInput: CreateGenreInput): Genre | Promise<Genre>;
     updateGenre(updateGenreInput: UpdateGenreInput): Genre | Promise<Genre>;
     removeGenre(id: number): Nullable<Genre> | Promise<Nullable<Genre>>;
@@ -114,6 +126,15 @@ export interface Member {
     artist?: Nullable<string>;
     instrument?: Nullable<string>;
     years?: Nullable<Nullable<string>[]>;
+}
+
+export interface Favourites {
+    id: string;
+    userId?: Nullable<string>;
+    bands?: Nullable<Nullable<Band>[]>;
+    genres?: Nullable<Nullable<Genre>[]>;
+    artists?: Nullable<Nullable<Artist>[]>;
+    tracks?: Nullable<Nullable<Track>[]>;
 }
 
 export interface Genre {
