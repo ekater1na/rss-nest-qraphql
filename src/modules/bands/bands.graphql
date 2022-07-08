@@ -1,6 +1,16 @@
 type Band {
-  # Example field (placeholder)
-  exampleField: Int
+  id: ID!
+  name: String
+  origin: String
+  members: [Member]
+  website: String
+  genres: [Genre]
+}
+
+type Member {
+  artist: String
+  instrument: String
+  years: [String]
 }
 
 input CreateBandInput {
@@ -13,8 +23,8 @@ input UpdateBandInput {
 }
 
 type Query {
-  bands: [Band]!
-  band(id: Int!): Band
+  bands(limit: Int, offset: Int): [Band]!
+  band(id: ID!): Band
 }
 
 type Mutation {

@@ -1,11 +1,22 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
+import { GenresService } from '../genres/genres.service';
 import { BandsService } from './bands.service';
 import { CreateBandInput } from './dto/create-band.input';
 import { UpdateBandInput } from './dto/update-band.input';
 
 @Resolver('Band')
 export class BandsResolver {
-  constructor(private readonly bandsService: BandsService) {}
+  constructor(
+    private readonly bandsService: BandsService,
+    private readonly genresService: GenresService,
+  ) {}
 
   @Mutation('createBand')
   create(@Args('createBandInput') createBandInput: CreateBandInput) {
@@ -13,12 +24,15 @@ export class BandsResolver {
   }
 
   @Query('bands')
-  findAll() {
-    return this.bandsService.findAll();
+  findAll(
+    @Args('limit', { defaultValue: 5 }) limit: number,
+    @Args('offset', { defaultValue: 0 }) offset: number,
+  ) {
+    return this.bandsService.findAll(limit, offset);
   }
 
   @Query('band')
-  findOne(@Args('id') id: number) {
+  findOne(@Args('id') id: string) {
     return this.bandsService.findOne(id);
   }
 
@@ -30,5 +44,16 @@ export class BandsResolver {
   @Mutation('removeBand')
   remove(@Args('id') id: number) {
     return this.bandsService.remove(id);
+  }
+
+  @Resolver()
+  @ResolveField()
+  async genres(@Parent() track) {
+    const { genresIds } = track;
+    return await Promise.all(
+      genresIds.map((id) => {
+        return this.genresService.findOne(id);
+      }),
+    );
   }
 }
