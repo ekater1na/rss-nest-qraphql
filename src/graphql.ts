@@ -40,12 +40,20 @@ export interface UpdateTrackInput {
 }
 
 export interface Artist {
-    exampleField?: Nullable<number>;
+    id: string;
+    firstName?: Nullable<string>;
+    secondName?: Nullable<string>;
+    middleName?: Nullable<string>;
+    birthDate?: Nullable<string>;
+    birthPlace?: Nullable<string>;
+    country?: Nullable<string>;
+    bands?: Nullable<Nullable<Band>[]>;
+    instruments?: Nullable<Nullable<string>[]>;
 }
 
 export interface IQuery {
-    artists(): Nullable<Artist>[] | Promise<Nullable<Artist>[]>;
-    artist(id: number): Nullable<Artist> | Promise<Nullable<Artist>>;
+    artists(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Artist>[] | Promise<Nullable<Artist>[]>;
+    artist(id: string): Nullable<Artist> | Promise<Nullable<Artist>>;
     bands(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Band>[] | Promise<Nullable<Band>[]>;
     band(id: string): Nullable<Band> | Promise<Nullable<Band>>;
     genres(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Genre>[] | Promise<Nullable<Genre>[]>;
