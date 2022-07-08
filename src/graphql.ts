@@ -55,6 +55,14 @@ export interface UpdateTrackInput {
     id: number;
 }
 
+export interface CreateUserInput {
+    exampleField?: Nullable<number>;
+}
+
+export interface UpdateUserInput {
+    id: number;
+}
+
 export interface Album {
     id: string;
     name?: Nullable<string>;
@@ -78,6 +86,8 @@ export interface IQuery {
     genre(id: string): Nullable<Genre> | Promise<Nullable<Genre>>;
     tracks(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Track>[] | Promise<Nullable<Track>[]>;
     track(id: string): Nullable<Track> | Promise<Nullable<Track>>;
+    users(): Nullable<User>[] | Promise<Nullable<User>[]>;
+    user(id: number): Nullable<User> | Promise<Nullable<User>>;
 }
 
 export interface IMutation {
@@ -99,6 +109,9 @@ export interface IMutation {
     createTrack(createTrackInput: CreateTrackInput): Track | Promise<Track>;
     updateTrack(updateTrackInput: UpdateTrackInput): Track | Promise<Track>;
     removeTrack(id: number): Nullable<Track> | Promise<Nullable<Track>>;
+    createUser(createUserInput: CreateUserInput): User | Promise<User>;
+    updateUser(updateUserInput: UpdateUserInput): User | Promise<User>;
+    removeUser(id: number): Nullable<User> | Promise<Nullable<User>>;
 }
 
 export interface Artist {
@@ -152,6 +165,10 @@ export interface Track {
     bands?: Nullable<Nullable<Band>[]>;
     duration?: Nullable<number>;
     released?: Nullable<number>;
+}
+
+export interface User {
+    exampleField?: Nullable<number>;
 }
 
 type Nullable<T> = T | null;
