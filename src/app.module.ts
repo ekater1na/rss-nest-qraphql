@@ -6,6 +6,7 @@ import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { GenresModule } from './modules/genres/genres.module';
+import { TracksModule } from './modules/tracks/tracks.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { GenresModule } from './modules/genres/genres.module';
       playground: true,
     }),
     GenresModule,
+    TracksModule,
   ],
   controllers: [AppController],
   providers: [AppService],
