@@ -1,0 +1,24 @@
+type Band {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateBandInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateBandInput {
+  id: Int!
+}
+
+type Query {
+  bands: [Band]!
+  band(id: Int!): Band
+}
+
+type Mutation {
+  createBand(createBandInput: CreateBandInput!): Band!
+  updateBand(updateBandInput: UpdateBandInput!): Band!
+  removeBand(id: Int!): Band
+}

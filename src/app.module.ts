@@ -7,6 +7,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { GenresModule } from './modules/genres/genres.module';
 import { TracksModule } from './modules/tracks/tracks.module';
+import { BandsModule } from './modules/bands/bands.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { TracksModule } from './modules/tracks/tracks.module';
     }),
     GenresModule,
     TracksModule,
+    BandsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
