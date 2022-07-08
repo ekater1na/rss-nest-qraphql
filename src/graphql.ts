@@ -7,6 +7,14 @@
 
 /* tslint:disable */
 /* eslint-disable */
+export interface CreateAlbumInput {
+    exampleField?: Nullable<number>;
+}
+
+export interface UpdateAlbumInput {
+    id: number;
+}
+
 export interface CreateArtistInput {
     exampleField?: Nullable<number>;
 }
@@ -39,19 +47,20 @@ export interface UpdateTrackInput {
     id: number;
 }
 
-export interface Artist {
+export interface Album {
     id: string;
-    firstName?: Nullable<string>;
-    secondName?: Nullable<string>;
-    middleName?: Nullable<string>;
-    birthDate?: Nullable<string>;
-    birthPlace?: Nullable<string>;
-    country?: Nullable<string>;
+    name?: Nullable<string>;
+    released?: Nullable<number>;
+    artists?: Nullable<Nullable<Artist>[]>;
     bands?: Nullable<Nullable<Band>[]>;
-    instruments?: Nullable<Nullable<string>[]>;
+    tracks?: Nullable<Nullable<Track>[]>;
+    genres?: Nullable<Nullable<Genre>[]>;
+    image?: Nullable<string>;
 }
 
 export interface IQuery {
+    albums(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Album>[] | Promise<Nullable<Album>[]>;
+    album(id: string): Nullable<Album> | Promise<Nullable<Album>>;
     artists(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Artist>[] | Promise<Nullable<Artist>[]>;
     artist(id: string): Nullable<Artist> | Promise<Nullable<Artist>>;
     bands(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Band>[] | Promise<Nullable<Band>[]>;
@@ -63,6 +72,9 @@ export interface IQuery {
 }
 
 export interface IMutation {
+    createAlbum(createAlbumInput: CreateAlbumInput): Album | Promise<Album>;
+    updateAlbum(updateAlbumInput: UpdateAlbumInput): Album | Promise<Album>;
+    removeAlbum(id: number): Nullable<Album> | Promise<Nullable<Album>>;
     createArtist(createArtistInput: CreateArtistInput): Artist | Promise<Artist>;
     updateArtist(updateArtistInput: UpdateArtistInput): Artist | Promise<Artist>;
     removeArtist(id: number): Nullable<Artist> | Promise<Nullable<Artist>>;
@@ -75,6 +87,18 @@ export interface IMutation {
     createTrack(createTrackInput: CreateTrackInput): Track | Promise<Track>;
     updateTrack(updateTrackInput: UpdateTrackInput): Track | Promise<Track>;
     removeTrack(id: number): Nullable<Track> | Promise<Nullable<Track>>;
+}
+
+export interface Artist {
+    id: string;
+    firstName?: Nullable<string>;
+    secondName?: Nullable<string>;
+    middleName?: Nullable<string>;
+    birthDate?: Nullable<string>;
+    birthPlace?: Nullable<string>;
+    country?: Nullable<string>;
+    bands?: Nullable<Nullable<Band>[]>;
+    instruments?: Nullable<Nullable<string>[]>;
 }
 
 export interface Band {

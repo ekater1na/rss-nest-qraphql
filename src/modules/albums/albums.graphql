@@ -1,6 +1,12 @@
 type Album {
-  # Example field (placeholder)
-  exampleField: Int
+ id: ID!
+  name: String
+  released: Int
+  artists: [Artist]
+  bands: [Band]
+  tracks: [Track]
+  genres: [Genre]
+  image: String
 }
 
 input CreateAlbumInput {
@@ -13,8 +19,8 @@ input UpdateAlbumInput {
 }
 
 type Query {
-  albums: [Album]!
-  album(id: Int!): Album
+  albums(limit: Int, offset: Int): [Album]!
+  album(id: ID!): Album
 }
 
 type Mutation {
