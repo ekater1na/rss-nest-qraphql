@@ -161,10 +161,12 @@ export interface Genre {
 export interface Track {
     id: string;
     title: string;
+    album?: Nullable<Album>;
     artists?: Nullable<Nullable<Artist>[]>;
     bands?: Nullable<Nullable<Band>[]>;
     duration?: Nullable<number>;
     released?: Nullable<number>;
+    genres?: Nullable<Nullable<Genre>[]>;
 }
 
 export interface User {
