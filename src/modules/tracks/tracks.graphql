@@ -1,6 +1,12 @@
 type Track {
-  # Example field (placeholder)
-  exampleField: Int
+  id: ID!
+  title: String!
+  # album: Album
+  artists: [Artist]
+  bands: [Band]
+  duration: Int
+  released: Int
+  # genres: [Genre]
 }
 
 input CreateTrackInput {
@@ -13,8 +19,8 @@ input UpdateTrackInput {
 }
 
 type Query {
-  tracks: [Track]!
-  track(id: Int!): Track
+  tracks(limit: Int, offset: Int): [Track]!
+  track(id: ID!): Track
 }
 
 type Mutation {

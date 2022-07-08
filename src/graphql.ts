@@ -58,8 +58,8 @@ export interface IQuery {
     band(id: string): Nullable<Band> | Promise<Nullable<Band>>;
     genres(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Genre>[] | Promise<Nullable<Genre>[]>;
     genre(id: string): Nullable<Genre> | Promise<Nullable<Genre>>;
-    tracks(): Nullable<Track>[] | Promise<Nullable<Track>[]>;
-    track(id: number): Nullable<Track> | Promise<Nullable<Track>>;
+    tracks(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Track>[] | Promise<Nullable<Track>[]>;
+    track(id: string): Nullable<Track> | Promise<Nullable<Track>>;
 }
 
 export interface IMutation {
@@ -101,7 +101,12 @@ export interface Genre {
 }
 
 export interface Track {
-    exampleField?: Nullable<number>;
+    id: string;
+    title: string;
+    artists?: Nullable<Nullable<Artist>[]>;
+    bands?: Nullable<Nullable<Band>[]>;
+    duration?: Nullable<number>;
+    released?: Nullable<number>;
 }
 
 type Nullable<T> = T | null;
