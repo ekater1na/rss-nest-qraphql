@@ -16,7 +16,7 @@ input CreateArtistInput {
 }
 
 input UpdateArtistInput {
-  id: Int!
+  d: ID!
 }
 
 type Query {
@@ -25,7 +25,7 @@ type Query {
 }
 
 type Mutation {
-  createArtist(createArtistInput: CreateArtistInput!): Artist!
-  updateArtist(updateArtistInput: UpdateArtistInput!): Artist!
-  removeArtist(id: Int!): Artist
+  createArtist(createArtistInput: CreateArtistInput!): Artist
+  updateArtist(updateArtistInput: UpdateArtistInput!): Artist
+  removeArtist(d: ID!): Artist
 }

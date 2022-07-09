@@ -16,7 +16,7 @@ input CreateUserInput {
 }
 
 input UpdateUserInput {
-  id: Int!
+  d: ID!
 }
 
 type Query {
@@ -25,7 +25,7 @@ type Query {
 }
 
 type Mutation {
-  createUser(createUserInput: CreateUserInput!): User!
-  updateUser(updateUserInput: UpdateUserInput!): User!
-  removeUser(id: Int!): User
+  createUser(createUserInput: CreateUserInput!): User
+  updateUser(updateUserInput: UpdateUserInput!): User
+  removeUser(d: ID!): User
 }

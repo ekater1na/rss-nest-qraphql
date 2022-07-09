@@ -13,7 +13,7 @@ input CreateFavouritesInput {
 }
 
 input UpdateFavouritesInput {
-  id: Int!
+  d: ID!
 }
 
 type Query {
@@ -21,7 +21,7 @@ type Query {
 }
 
 type Mutation {
-  createFavourites(createFavouritesInput: CreateFavouritesInput!): Favourites!
-  updateFavourites(updateFavouritesInput: UpdateFavouritesInput!): Favourites!
-  removeFavourites(id: Int!): Favourites
+  createFavourites(createFavouritesInput: CreateFavouritesInput!): Favourites
+  updateFavourites(updateFavouritesInput: UpdateFavouritesInput!): Favourites
+  removeFavourites(d: ID!): Favourites
 }

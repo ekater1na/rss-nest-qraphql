@@ -15,7 +15,7 @@ input CreateTrackInput {
 }
 
 input UpdateTrackInput {
-  id: Int!
+  d: ID!
 }
 
 type Query {
@@ -24,7 +24,7 @@ type Query {
 }
 
 type Mutation {
-  createTrack(createTrackInput: CreateTrackInput!): Track!
-  updateTrack(updateTrackInput: UpdateTrackInput!): Track!
-  removeTrack(id: Int!): Track
+  createTrack(createTrackInput: CreateTrackInput!): Track
+  updateTrack(updateTrackInput: UpdateTrackInput!): Track
+  removeTrack(d: ID!): Track
 }

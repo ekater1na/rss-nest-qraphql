@@ -15,7 +15,7 @@ input CreateAlbumInput {
 }
 
 input UpdateAlbumInput {
-  id: Int!
+  d: ID!
 }
 
 type Query {
@@ -24,7 +24,7 @@ type Query {
 }
 
 type Mutation {
-  createAlbum(createAlbumInput: CreateAlbumInput!): Album!
-  updateAlbum(updateAlbumInput: UpdateAlbumInput!): Album!
-  removeAlbum(id: Int!): Album
+  createAlbum(createAlbumInput: CreateAlbumInput!): Album
+  updateAlbum(updateAlbumInput: UpdateAlbumInput!): Album
+  removeAlbum(d: ID!): Album
 }

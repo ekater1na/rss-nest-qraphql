@@ -12,7 +12,7 @@ input CreateGenreInput {
 }
 
 input UpdateGenreInput {
-  id: Int!
+  d: ID!
 }
 
 type Query {
@@ -21,7 +21,7 @@ type Query {
 }
 
 type Mutation {
-  createGenre(createGenreInput: CreateGenreInput!): Genre!
-  updateGenre(updateGenreInput: UpdateGenreInput!): Genre!
-  removeGenre(id: Int!): Genre
+  createGenre(createGenreInput: CreateGenreInput!): Genre
+  updateGenre(updateGenreInput: UpdateGenreInput!): Genre
+  removeGenre(d: ID!): Genre
 }
