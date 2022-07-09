@@ -23,7 +23,22 @@ export class ArtistsService {
   }
 
   async create(createArtistInput: CreateArtistInput, context: any) {
-    return 'This action adds a new artist';
+    try {
+      const { authorization } = context.req.headers;
+      if (!authorization) {
+        console.log('🙏 Please add JWT token in HTTP Header');
+        return null;
+      }
+      const res = await this.client.post(`/`, createArtistInput, {
+        headers: {
+          authorization,
+        },
+      });
+      console.log(`🔥 Item was created`);
+      return res.data;
+    } catch (err) {
+      console.log(err.response.data);
+    }
   }
 
   async findAll(limit: number, offset: number): Promise<Artist[]> {
@@ -40,14 +55,29 @@ export class ArtistsService {
   }
 
   async update(id: string, updateArtistInput: UpdateArtistInput, context: any) {
-    return `This action updates a #${id} artist`;
+    try {
+      const { authorization } = context.req.headers;
+      if (!authorization) {
+        console.log('🙏 Please add JWT token in HTTP Header');
+        return null;
+      }
+      const res = await this.client.put(`/${id}`, updateArtistInput, {
+        headers: {
+          authorization,
+        },
+      });
+      console.log(`🎉 Item with id ${id} was updated`);
+      return res.data;
+    } catch (err) {
+      console.log(err.response.data);
+    }
   }
 
   async remove(id: string, context: any): Promise<Artist> {
     try {
       const { authorization } = context.req.headers;
       if (!authorization) {
-        console.log('Please add JWT token in HTTP Header');
+        console.log('🙏 Please add JWT token in HTTP Header');
         return null;
       }
       const { res } = await this.client.delete(`/${id}`, {
@@ -55,7 +85,7 @@ export class ArtistsService {
           authorization,
         },
       });
-      console.log(`Item with id ${id} was deleted`);
+      console.log(`🔄 Item with id ${id} was deleted`);
       return res;
     } catch (err) {
       console.log(err.response.data);

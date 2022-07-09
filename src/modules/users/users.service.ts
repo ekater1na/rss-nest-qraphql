@@ -36,7 +36,7 @@ export class UsersService {
     try {
       const { authorization } = context.req.headers;
       if (!authorization) {
-        console.log('Please add JWT token in HTTP Header');
+        console.log('🙏 Please add JWT token in HTTP Header');
         return null;
       }
       const { res } = await this.client.delete(`/${id}`, {
@@ -44,7 +44,7 @@ export class UsersService {
           authorization,
         },
       });
-      console.log(`Item with id ${id} was deleted`);
+      console.log(`🔄 Item with id ${id} was deleted`);
       return res;
     } catch (err) {
       console.log(err.response.data);

@@ -23,7 +23,22 @@ export class AlbumsService {
   }
 
   async create(createAlbumInput: CreateAlbumInput, context: any) {
-    return 'This action adds a new album';
+    try {
+      const { authorization } = context.req.headers;
+      if (!authorization) {
+        console.log('🙏 Please add JWT token in HTTP Header');
+        return null;
+      }
+      const { res } = await this.client.post(`/`, createAlbumInput, {
+        headers: {
+          authorization,
+        },
+      });
+      console.log(`🔥 Item was created`);
+      return res;
+    } catch (err) {
+      console.log(err.response.data);
+    }
   }
 
   async findAll(limit: number, offset: number): Promise<Album[]> {
@@ -39,23 +54,39 @@ export class AlbumsService {
   }
 
   async update(id: string, updateAlbumInput: UpdateAlbumInput, context: any) {
-    return `This action updates a #${id} album`;
+    try {
+      const { authorization } = context.req.headers;
+      if (!authorization) {
+        console.log('🙏 Please add JWT token in HTTP Header');
+        return null;
+      }
+      const res = await this.client.put(`/${id}`, updateAlbumInput, {
+        headers: {
+          authorization,
+        },
+      });
+      console.log(`🎉 Item with id ${id} was updated`);
+
+      return res.data;
+    } catch (err) {
+      console.log(err.response.data);
+    }
   }
 
   async remove(id: string, context: any): Promise<Album> {
     try {
       const { authorization } = context.req.headers;
       if (!authorization) {
-        console.log('Please add JWT token in HTTP Header');
+        console.log('🙏 Please add JWT token in HTTP Header');
         return null;
       }
-      const { res } = await this.client.delete(`/${id}`, {
+      const res = await this.client.delete(`/${id}`, {
         headers: {
           authorization,
         },
       });
-      console.log(`Item with id ${id} was deleted`);
-      return res;
+      console.log(`🔄 Item with id ${id} was deleted`);
+      return res.data;
     } catch (err) {
       console.log(err.response.data);
     }

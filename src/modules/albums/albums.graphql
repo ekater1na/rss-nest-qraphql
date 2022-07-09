@@ -1,5 +1,5 @@
 type Album {
- id: ID!
+  id: ID!
   name: String
   released: Int
   artists: [Artist]
@@ -10,12 +10,24 @@ type Album {
 }
 
 input CreateAlbumInput {
-  # Example field (placeholder)
-  exampleField: Int
+  name: String!
+  released: Int
+  artistsIds: [ID]
+  bandsIds: [ID]
+  trackIds: [ID]
+  genresIds: [ID]
+  image: String
 }
 
 input UpdateAlbumInput {
   id: ID!
+  name: String
+  released: Int
+  artistsIds: [ID]
+  bandsIds: [ID]
+  trackIds: [ID]
+  genresIds: [ID]
+  image: String
 }
 
 type Query {

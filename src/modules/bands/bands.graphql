@@ -2,7 +2,7 @@ type Band {
   id: ID!
   name: String
   origin: String
-  members: [Member]
+  # members: [Member]
   website: String
   genres: [Genre]
 }
@@ -13,13 +13,27 @@ type Member {
   years: [String]
 }
 
+input MemberInput {
+  artist: String
+  instrument: String
+  years: [String]
+}
+
 input CreateBandInput {
-  # Example field (placeholder)
-  exampleField: Int
+  name: String!
+  origin: String
+  # members: [Member]
+  website: String
+  genresIds: [ID]
 }
 
 input UpdateBandInput {
   id: ID!
+  name: String
+  origin: String
+  # members: [Member]
+  website: String
+  genresIds: [ID]
 }
 
 type Query {

@@ -23,7 +23,22 @@ export class GenresService {
   }
 
   async create(createGenreInput: CreateGenreInput, context: any) {
-    return 'This action adds a new genre';
+    try {
+      const { authorization } = context.req.headers;
+      if (!authorization) {
+        console.log('🙏 Please add JWT token in HTTP Header');
+        return null;
+      }
+      const res = await this.client.post(`/`, createGenreInput, {
+        headers: {
+          authorization,
+        },
+      });
+      console.log(`🔥 Item was created`);
+      return res.data;
+    } catch (err) {
+      console.log(err.response.data);
+    }
   }
 
   async findAll(limit: number, offset: number): Promise<Genre[]> {
@@ -40,14 +55,29 @@ export class GenresService {
   }
 
   async update(id: string, updateGenreInput: UpdateGenreInput, context: any) {
-    return `This action updates a #${id} genre`;
+    try {
+      const { authorization } = context.req.headers;
+      if (!authorization) {
+        console.log('🙏 Please add JWT token in HTTP Header');
+        return null;
+      }
+      const res = await this.client.put(`/${id}`, updateGenreInput, {
+        headers: {
+          authorization,
+        },
+      });
+      console.log(`🎉 Item with id ${id} was updated`);
+      return res.data;
+    } catch (err) {
+      console.log(err.response.data);
+    }
   }
 
   async remove(id: string, context: any): Promise<Genre> {
     try {
       const { authorization } = context.req.headers;
       if (!authorization) {
-        console.log('Please add JWT token in HTTP Header');
+        console.log('🙏 Please add JWT token in HTTP Header');
         return null;
       }
       const { res } = await this.client.delete(`/${id}`, {
@@ -55,7 +85,7 @@ export class GenresService {
           authorization,
         },
       });
-      console.log(`Item with id ${id} was deleted`);
+      console.log(`🔄 Item with id ${id} was deleted`);
       return res;
     } catch (err) {
       console.log(err.response.data);

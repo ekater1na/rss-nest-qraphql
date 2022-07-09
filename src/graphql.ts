@@ -8,27 +8,68 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface CreateAlbumInput {
-    exampleField?: Nullable<number>;
+    name: string;
+    released?: Nullable<number>;
+    artistsIds?: Nullable<Nullable<string>[]>;
+    bandsIds?: Nullable<Nullable<string>[]>;
+    trackIds?: Nullable<Nullable<string>[]>;
+    genresIds?: Nullable<Nullable<string>[]>;
+    image?: Nullable<string>;
 }
 
 export interface UpdateAlbumInput {
     id: string;
+    name?: Nullable<string>;
+    released?: Nullable<number>;
+    artistsIds?: Nullable<Nullable<string>[]>;
+    bandsIds?: Nullable<Nullable<string>[]>;
+    trackIds?: Nullable<Nullable<string>[]>;
+    genresIds?: Nullable<Nullable<string>[]>;
+    image?: Nullable<string>;
 }
 
 export interface CreateArtistInput {
-    exampleField?: Nullable<number>;
+    firstName: string;
+    secondName?: Nullable<string>;
+    middleName?: Nullable<string>;
+    birthDate?: Nullable<string>;
+    birthPlace?: Nullable<string>;
+    country?: Nullable<string>;
+    bandsIds?: Nullable<Nullable<string>[]>;
+    instruments?: Nullable<Nullable<string>[]>;
 }
 
 export interface UpdateArtistInput {
     id: string;
+    firstName?: Nullable<string>;
+    secondName?: Nullable<string>;
+    middleName?: Nullable<string>;
+    birthDate?: Nullable<string>;
+    birthPlace?: Nullable<string>;
+    country?: Nullable<string>;
+    bandsIds?: Nullable<Nullable<string>[]>;
+    instruments?: Nullable<Nullable<string>[]>;
+}
+
+export interface MemberInput {
+    artist?: Nullable<string>;
+    instrument?: Nullable<string>;
+    years?: Nullable<Nullable<string>[]>;
 }
 
 export interface CreateBandInput {
-    exampleField?: Nullable<number>;
+    name: string;
+    origin?: Nullable<string>;
+    website?: Nullable<string>;
+    genresIds?: Nullable<Nullable<string>[]>;
 }
 
 export interface UpdateBandInput {
     id: string;
+    name?: Nullable<string>;
+    origin?: Nullable<string>;
+    website?: Nullable<string>;
+    genresIds?: Nullable<Nullable<string>[]>;
 }
 
 export interface CreateFavouritesInput {
@@ -55,11 +96,22 @@ export interface UpdateGenreInput {
 }
 
 export interface CreateTrackInput {
-    exampleField?: Nullable<number>;
+    title: string;
+    artistsIds?: Nullable<Nullable<string>[]>;
+    bandsIds?: Nullable<Nullable<string>[]>;
+    duration?: Nullable<number>;
+    released?: Nullable<number>;
+    genresIds?: Nullable<Nullable<string>[]>;
 }
 
 export interface UpdateTrackInput {
     id: string;
+    title?: Nullable<string>;
+    artistsIds?: Nullable<Nullable<string>[]>;
+    bandsIds?: Nullable<Nullable<string>[]>;
+    duration?: Nullable<number>;
+    released?: Nullable<number>;
+    genresIds?: Nullable<Nullable<string>[]>;
 }
 
 export interface CreateUserInput {
@@ -137,7 +189,6 @@ export interface Band {
     id: string;
     name?: Nullable<string>;
     origin?: Nullable<string>;
-    members?: Nullable<Nullable<Member>[]>;
     website?: Nullable<string>;
     genres?: Nullable<Nullable<Genre>[]>;
 }
@@ -168,7 +219,6 @@ export interface Genre {
 export interface Track {
     id: string;
     title: string;
-    album?: Nullable<Album>;
     artists?: Nullable<Nullable<Artist>[]>;
     bands?: Nullable<Nullable<Band>[]>;
     duration?: Nullable<number>;

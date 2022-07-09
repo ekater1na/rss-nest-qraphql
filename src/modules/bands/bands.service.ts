@@ -22,8 +22,23 @@ export class BandsService {
     });
   }
 
- async create(createBandInput: CreateBandInput, context: any) {
-    return 'This action adds a new band';
+  async create(createBandInput: CreateBandInput, context: any) {
+    try {
+      const { authorization } = context.req.headers;
+      if (!authorization) {
+        console.log('🙏 Please add JWT token in HTTP Header');
+        return null;
+      }
+      const res = await this.client.post(`/`, createBandInput, {
+        headers: {
+          authorization,
+        },
+      });
+      console.log(`🔥 Item was created`);
+      return res.data;
+    } catch (err) {
+      console.log(err.response.data);
+    }
   }
 
   async findAll(limit: number, offset: number): Promise<Band[]> {
@@ -39,15 +54,30 @@ export class BandsService {
     return res.data;
   }
 
- async update(id: string, updateBandInput: UpdateBandInput, context: any) {
-    return `This action updates a #${id} band`;
+  async update(id: string, updateBandInput: UpdateBandInput, context: any) {
+    try {
+      const { authorization } = context.req.headers;
+      if (!authorization) {
+        console.log('🙏 Please add JWT token in HTTP Header');
+        return null;
+      }
+      const res = await this.client.put(`/${id}`, updateBandInput, {
+        headers: {
+          authorization,
+        },
+      });
+      console.log(`🎉 Item with id ${id} was updated`);
+      return res.data;
+    } catch (err) {
+      console.log(err.response.data);
+    }
   }
 
   async remove(id: string, context: any): Promise<Band> {
     try {
       const { authorization } = context.req.headers;
       if (!authorization) {
-        console.log('Please add JWT token in HTTP Header');
+        console.log('🙏 Please add JWT token in HTTP Header');
         return null;
       }
       const { res } = await this.client.delete(`/${id}`, {
@@ -55,7 +85,7 @@ export class BandsService {
           authorization,
         },
       });
-      console.log(`Item with id ${id} was deleted`);
+      console.log(`🔄 Item with id ${id} was deleted`);
       return res;
     } catch (err) {
       console.log(err.response.data);
