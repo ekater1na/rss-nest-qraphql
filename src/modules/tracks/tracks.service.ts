@@ -39,11 +39,11 @@ export class TracksService {
     return res.data;
   }
 
-  update(id: number, updateTrackInput: UpdateTrackInput) {
+  update(id: string, updateTrackInput: UpdateTrackInput) {
     return `This action updates a #${id} track`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} track`;
   }
 }

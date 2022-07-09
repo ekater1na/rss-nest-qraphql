@@ -46,7 +46,7 @@ export class TracksResolver {
   }
 
   @Mutation('removeTrack')
-  remove(@Args('id') id: number) {
+  remove(@Args('id') id: string) {
     return this.tracksService.remove(id);
   }
 

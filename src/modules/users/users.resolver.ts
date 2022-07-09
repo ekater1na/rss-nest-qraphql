@@ -28,7 +28,7 @@ export class UsersResolver {
   }
 
   @Mutation('removeUser')
-  remove(@Args('id') id: number) {
+  remove(@Args('id') id: string) {
     return this.usersService.remove(id);
   }
 }

@@ -39,11 +39,11 @@ export class ArtistsService {
     return res.data;
   }
 
-  update(id: number, updateArtistInput: UpdateArtistInput) {
+  update(id: string, updateArtistInput: UpdateArtistInput) {
     return `This action updates a #${id} artist`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} artist`;
   }
 }

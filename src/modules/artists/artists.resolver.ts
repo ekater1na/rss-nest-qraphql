@@ -42,7 +42,7 @@ export class ArtistsResolver {
   }
 
   @Mutation('removeArtist')
-  remove(@Args('id') id: number) {
+  remove(@Args('id') id: string) {
     return this.artistsService.remove(id);
   }
 

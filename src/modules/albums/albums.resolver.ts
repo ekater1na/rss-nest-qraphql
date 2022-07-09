@@ -48,7 +48,7 @@ export class AlbumsResolver {
   }
 
   @Mutation('removeAlbum')
-  remove(@Args('id') id: number) {
+  remove(@Args('id') id: string) {
     return this.albumsService.remove(id);
   }
 

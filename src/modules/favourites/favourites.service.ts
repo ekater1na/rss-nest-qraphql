@@ -29,11 +29,11 @@ export class FavouritesService {
     return 'This action adds a new favourites';
   }
 
-  update(id: number, updateFavouriteInput: UpdateFavouritesInput) {
+  update(id: string, updateFavouriteInput: UpdateFavouritesInput) {
     return `This action updates a #${id} favourites`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} favourites`;
   }
 }

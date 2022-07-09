@@ -20,7 +20,7 @@ input UpdateArtistInput {
 }
 
 type Query {
-  artists(limit: Int, offset: Int): [Artist]!
+  artists(limit: Int, offset: Int): [Artist]
   artist(id: ID!): Artist
 }
 

@@ -42,7 +42,7 @@ export class BandsResolver {
   }
 
   @Mutation('removeBand')
-  remove(@Args('id') id: number) {
+  remove(@Args('id') id: string) {
     return this.bandsService.remove(id);
   }
 

@@ -1,5 +1,5 @@
 type Favourites {
- id: ID!
+  id: ID!
   userId: ID
   bands: [Band]
   genres: [Genre]
@@ -17,7 +17,7 @@ input UpdateFavouritesInput {
 }
 
 type Query {
-  favourites: [Favourites]!
+  favourites: [Favourites]
 }
 
 type Mutation {

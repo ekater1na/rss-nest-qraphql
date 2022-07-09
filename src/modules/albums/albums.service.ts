@@ -21,7 +21,7 @@ export class AlbumsService {
       return res;
     });
   }
-  
+
   create(createAlbumInput: CreateAlbumInput) {
     return 'This action adds a new album';
   }
@@ -38,11 +38,11 @@ export class AlbumsService {
     return res.data;
   }
 
-  update(id: number, updateAlbumInput: UpdateAlbumInput) {
+  update(id: string, updateAlbumInput: UpdateAlbumInput) {
     return `This action updates a #${id} album`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} album`;
   }
 }

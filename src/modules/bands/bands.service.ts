@@ -39,11 +39,11 @@ export class BandsService {
     return res.data;
   }
 
-  update(id: number, updateBandInput: UpdateBandInput) {
+  update(id: string, updateBandInput: UpdateBandInput) {
     return `This action updates a #${id} band`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} band`;
   }
 }

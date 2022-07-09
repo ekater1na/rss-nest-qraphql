@@ -23,7 +23,7 @@ input UpdateBandInput {
 }
 
 type Query {
-  bands(limit: Int, offset: Int): [Band]!
+  bands(limit: Int, offset: Int): [Band]
   band(id: ID!): Band
 }
 

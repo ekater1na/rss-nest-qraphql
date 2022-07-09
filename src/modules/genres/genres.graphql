@@ -16,7 +16,7 @@ input UpdateGenreInput {
 }
 
 type Query {
-  genres(limit: Int, offset: Int): [Genre]!
+  genres(limit: Int, offset: Int): [Genre]
   genre(id: ID!): Genre
 }
 

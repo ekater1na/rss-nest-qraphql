@@ -39,11 +39,11 @@ export class GenresService {
     return res.data;
   }
 
-  update(id: number, updateGenreInput: UpdateGenreInput) {
+  update(id: string, updateGenreInput: UpdateGenreInput) {
     return `This action updates a #${id} genre`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} genre`;
   }
 }

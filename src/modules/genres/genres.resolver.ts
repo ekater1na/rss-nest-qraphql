@@ -31,7 +31,7 @@ export class GenresResolver {
   }
 
   @Mutation('removeGenre')
-  remove(@Args('id') id: number) {
+  remove(@Args('id') id: string) {
     return this.genresService.remove(id);
   }
 }
