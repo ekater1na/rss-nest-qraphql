@@ -19,7 +19,7 @@ input CreateBandInput {
 }
 
 input UpdateBandInput {
-  d: ID!
+  id: ID!
 }
 
 type Query {

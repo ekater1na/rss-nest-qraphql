@@ -15,7 +15,7 @@ input CreateTrackInput {
 }
 
 input UpdateTrackInput {
-  d: ID!
+  id: ID!
 }
 
 type Query {

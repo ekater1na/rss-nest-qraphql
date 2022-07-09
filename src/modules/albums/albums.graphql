@@ -15,7 +15,7 @@ input CreateAlbumInput {
 }
 
 input UpdateAlbumInput {
-  d: ID!
+  id: ID!
 }
 
 type Query {

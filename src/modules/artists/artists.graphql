@@ -16,7 +16,7 @@ input CreateArtistInput {
 }
 
 input UpdateArtistInput {
-  d: ID!
+  id: ID!
 }
 
 type Query {

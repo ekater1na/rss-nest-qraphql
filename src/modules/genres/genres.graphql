@@ -1,5 +1,5 @@
 type Genre {
- id: ID!
+  id: ID!
   name: String
   description: String
   country: String
@@ -7,12 +7,18 @@ type Genre {
 }
 
 input CreateGenreInput {
-  # Example field (placeholder)
-  exampleField: Int
+  name: String!
+  description: String
+  country: String
+  year: Int
 }
 
 input UpdateGenreInput {
-  d: ID!
+  id: ID!
+  name: String
+  description: String
+  country: String
+  year: Int
 }
 
 type Query {
@@ -23,5 +29,5 @@ type Query {
 type Mutation {
   createGenre(createGenreInput: CreateGenreInput!): Genre
   updateGenre(updateGenreInput: UpdateGenreInput!): Genre
-  removeGenre(d: ID!): Genre
+  removeGenre(id: ID!): Genre
 }
