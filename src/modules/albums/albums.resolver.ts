@@ -26,8 +26,11 @@ export class AlbumsResolver {
   ) {}
 
   @Mutation('createAlbum')
-  create(@Args('createAlbumInput') createAlbumInput: CreateAlbumInput) {
-    return this.albumsService.create(createAlbumInput);
+  create(
+    @Args('createAlbumInput') createAlbumInput: CreateAlbumInput,
+    @Context() context: any,
+  ) {
+    return this.albumsService.create(createAlbumInput, context);
   }
 
   @Query('albums')
@@ -44,8 +47,15 @@ export class AlbumsResolver {
   }
 
   @Mutation('updateAlbum')
-  update(@Args('updateAlbumInput') updateAlbumInput: UpdateAlbumInput) {
-    return this.albumsService.update(updateAlbumInput.id, updateAlbumInput);
+  update(
+    @Args('updateAlbumInput') updateAlbumInput: UpdateAlbumInput,
+    @Context() context: any,
+  ) {
+    return this.albumsService.update(
+      updateAlbumInput.id,
+      updateAlbumInput,
+      context,
+    );
   }
 
   @Mutation('deleteAlbum')

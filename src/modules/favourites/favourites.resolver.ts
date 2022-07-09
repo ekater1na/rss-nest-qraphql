@@ -28,8 +28,9 @@ export class FavouritesResolver {
   @Mutation('createFavourites')
   create(
     @Args('createFavouritesInput') createFavouritesInput: CreateFavouritesInput,
+    @Context() context: any,
   ) {
-    return this.favouritesService.create(createFavouritesInput);
+    return this.favouritesService.create(createFavouritesInput, context);
   }
 
   @Query('favourites')
@@ -40,10 +41,12 @@ export class FavouritesResolver {
   @Mutation('updateFavourites')
   update(
     @Args('updateFavouritesInput') updateFavouritesInput: UpdateFavouritesInput,
+    @Context() context: any,
   ) {
     return this.favouritesService.update(
       updateFavouritesInput.id,
       updateFavouritesInput,
+      context,
     );
   }
 

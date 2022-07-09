@@ -20,8 +20,11 @@ export class BandsResolver {
   ) {}
 
   @Mutation('createBand')
-  create(@Args('createBandInput') createBandInput: CreateBandInput) {
-    return this.bandsService.create(createBandInput);
+  create(
+    @Args('createBandInput') createBandInput: CreateBandInput,
+    @Context() context: any,
+  ) {
+    return this.bandsService.create(createBandInput, context);
   }
 
   @Query('bands')
@@ -38,8 +41,15 @@ export class BandsResolver {
   }
 
   @Mutation('updateBand')
-  update(@Args('updateBandInput') updateBandInput: UpdateBandInput) {
-    return this.bandsService.update(updateBandInput.id, updateBandInput);
+  update(
+    @Args('updateBandInput') updateBandInput: UpdateBandInput,
+    @Context() context: any,
+  ) {
+    return this.bandsService.update(
+      updateBandInput.id,
+      updateBandInput,
+      context,
+    );
   }
 
   @Mutation('deleteBand')

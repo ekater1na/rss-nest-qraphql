@@ -25,11 +25,15 @@ export class FavouritesService {
     return res;
   }
 
-  create(createFavouriteInput: CreateFavouritesInput) {
+  async create(createFavouriteInput: CreateFavouritesInput, context: any) {
     return 'This action adds a new favourites';
   }
 
-  update(id: string, updateFavouriteInput: UpdateFavouritesInput) {
+  async update(
+    id: string,
+    updateFavouriteInput: UpdateFavouritesInput,
+    context: any,
+  ) {
     return `This action updates a #${id} favourites`;
   }
 

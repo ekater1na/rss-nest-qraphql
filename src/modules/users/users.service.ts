@@ -14,7 +14,7 @@ export class UsersService {
     });
   }
 
-  create(createUserInput: CreateUserInput) {
+  async create(createUserInput: CreateUserInput, context: any) {
     return 'This action adds a new user';
   }
 
@@ -28,7 +28,7 @@ export class UsersService {
     return res.data;
   }
 
-  update(id: string, updateUserInput: UpdateUserInput) {
+  async update(id: string, updateUserInput: UpdateUserInput, context: any) {
     return `This action updates a #${id} user`;
   }
 

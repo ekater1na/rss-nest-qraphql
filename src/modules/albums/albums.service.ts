@@ -22,7 +22,7 @@ export class AlbumsService {
     });
   }
 
-  create(createAlbumInput: CreateAlbumInput) {
+  async create(createAlbumInput: CreateAlbumInput, context: any) {
     return 'This action adds a new album';
   }
 
@@ -38,7 +38,7 @@ export class AlbumsService {
     return res.data;
   }
 
-  update(id: string, updateAlbumInput: UpdateAlbumInput) {
+  async update(id: string, updateAlbumInput: UpdateAlbumInput, context: any) {
     return `This action updates a #${id} album`;
   }
 

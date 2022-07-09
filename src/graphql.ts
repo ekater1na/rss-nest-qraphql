@@ -12,7 +12,7 @@ export interface CreateAlbumInput {
 }
 
 export interface UpdateAlbumInput {
-    id: number;
+    id: string;
 }
 
 export interface CreateArtistInput {
@@ -20,7 +20,7 @@ export interface CreateArtistInput {
 }
 
 export interface UpdateArtistInput {
-    id: number;
+    id: string;
 }
 
 export interface CreateBandInput {
@@ -28,7 +28,7 @@ export interface CreateBandInput {
 }
 
 export interface UpdateBandInput {
-    id: number;
+    id: string;
 }
 
 export interface CreateFavouritesInput {
@@ -36,15 +36,22 @@ export interface CreateFavouritesInput {
 }
 
 export interface UpdateFavouritesInput {
-    id: number;
+    id: string;
 }
 
 export interface CreateGenreInput {
-    exampleField?: Nullable<number>;
+    name: string;
+    description?: Nullable<string>;
+    country?: Nullable<string>;
+    year?: Nullable<number>;
 }
 
 export interface UpdateGenreInput {
-    id: number;
+    id: string;
+    name?: Nullable<string>;
+    description?: Nullable<string>;
+    country?: Nullable<string>;
+    year?: Nullable<number>;
 }
 
 export interface CreateTrackInput {
@@ -52,7 +59,7 @@ export interface CreateTrackInput {
 }
 
 export interface UpdateTrackInput {
-    id: number;
+    id: string;
 }
 
 export interface CreateUserInput {
@@ -60,7 +67,7 @@ export interface CreateUserInput {
 }
 
 export interface UpdateUserInput {
-    id: number;
+    id: string;
 }
 
 export interface Album {
@@ -75,14 +82,14 @@ export interface Album {
 }
 
 export interface IQuery {
-    albums(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Album>[] | Promise<Nullable<Album>[]>;
+    albums(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Nullable<Album>[]> | Promise<Nullable<Nullable<Album>[]>>;
     album(id: string): Nullable<Album> | Promise<Nullable<Album>>;
-    artists(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Artist>[] | Promise<Nullable<Artist>[]>;
+    artists(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Nullable<Artist>[]> | Promise<Nullable<Nullable<Artist>[]>>;
     artist(id: string): Nullable<Artist> | Promise<Nullable<Artist>>;
-    bands(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Band>[] | Promise<Nullable<Band>[]>;
+    bands(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Nullable<Band>[]> | Promise<Nullable<Nullable<Band>[]>>;
     band(id: string): Nullable<Band> | Promise<Nullable<Band>>;
-    favourites(): Nullable<Favourites>[] | Promise<Nullable<Favourites>[]>;
-    genres(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Genre>[] | Promise<Nullable<Genre>[]>;
+    favourites(): Nullable<Nullable<Favourites>[]> | Promise<Nullable<Nullable<Favourites>[]>>;
+    genres(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Nullable<Genre>[]> | Promise<Nullable<Nullable<Genre>[]>>;
     genre(id: string): Nullable<Genre> | Promise<Nullable<Genre>>;
     tracks(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<Track>[] | Promise<Nullable<Track>[]>;
     track(id: string): Nullable<Track> | Promise<Nullable<Track>>;
@@ -91,27 +98,27 @@ export interface IQuery {
 }
 
 export interface IMutation {
-    createAlbum(createAlbumInput: CreateAlbumInput): Album | Promise<Album>;
-    updateAlbum(updateAlbumInput: UpdateAlbumInput): Album | Promise<Album>;
-    removeAlbum(id: number): Nullable<Album> | Promise<Nullable<Album>>;
-    createArtist(createArtistInput: CreateArtistInput): Artist | Promise<Artist>;
-    updateArtist(updateArtistInput: UpdateArtistInput): Artist | Promise<Artist>;
-    removeArtist(id: number): Nullable<Artist> | Promise<Nullable<Artist>>;
-    createBand(createBandInput: CreateBandInput): Band | Promise<Band>;
-    updateBand(updateBandInput: UpdateBandInput): Band | Promise<Band>;
-    removeBand(id: number): Nullable<Band> | Promise<Nullable<Band>>;
-    createFavourites(createFavouritesInput: CreateFavouritesInput): Favourites | Promise<Favourites>;
-    updateFavourites(updateFavouritesInput: UpdateFavouritesInput): Favourites | Promise<Favourites>;
-    removeFavourites(id: number): Nullable<Favourites> | Promise<Nullable<Favourites>>;
-    createGenre(createGenreInput: CreateGenreInput): Genre | Promise<Genre>;
-    updateGenre(updateGenreInput: UpdateGenreInput): Genre | Promise<Genre>;
-    removeGenre(id: number): Nullable<Genre> | Promise<Nullable<Genre>>;
-    createTrack(createTrackInput: CreateTrackInput): Track | Promise<Track>;
-    updateTrack(updateTrackInput: UpdateTrackInput): Track | Promise<Track>;
-    removeTrack(id: number): Nullable<Track> | Promise<Nullable<Track>>;
-    createUser(createUserInput: CreateUserInput): User | Promise<User>;
-    updateUser(updateUserInput: UpdateUserInput): User | Promise<User>;
-    removeUser(id: number): Nullable<User> | Promise<Nullable<User>>;
+    createAlbum(createAlbumInput: CreateAlbumInput): Nullable<Album> | Promise<Nullable<Album>>;
+    updateAlbum(updateAlbumInput: UpdateAlbumInput): Nullable<Album> | Promise<Nullable<Album>>;
+    deleteAlbum(id: string): Nullable<Album> | Promise<Nullable<Album>>;
+    createArtist(createArtistInput: CreateArtistInput): Nullable<Artist> | Promise<Nullable<Artist>>;
+    updateArtist(updateArtistInput: UpdateArtistInput): Nullable<Artist> | Promise<Nullable<Artist>>;
+    deleteArtist(id: string): Nullable<Artist> | Promise<Nullable<Artist>>;
+    createBand(createBandInput: CreateBandInput): Nullable<Band> | Promise<Nullable<Band>>;
+    updateBand(updateBandInput: UpdateBandInput): Nullable<Band> | Promise<Nullable<Band>>;
+    deleteBand(id: string): Nullable<Band> | Promise<Nullable<Band>>;
+    createFavourites(createFavouritesInput: CreateFavouritesInput): Nullable<Favourites> | Promise<Nullable<Favourites>>;
+    updateFavourites(updateFavouritesInput: UpdateFavouritesInput): Nullable<Favourites> | Promise<Nullable<Favourites>>;
+    removeFavourites(id: string): Nullable<Favourites> | Promise<Nullable<Favourites>>;
+    createGenre(createGenreInput: CreateGenreInput): Nullable<Genre> | Promise<Nullable<Genre>>;
+    updateGenre(updateGenreInput: UpdateGenreInput): Nullable<Genre> | Promise<Nullable<Genre>>;
+    deleteGenre(id: string): Nullable<Genre> | Promise<Nullable<Genre>>;
+    createTrack(createTrackInput: CreateTrackInput): Nullable<Track> | Promise<Nullable<Track>>;
+    updateTrack(updateTrackInput: UpdateTrackInput): Nullable<Track> | Promise<Nullable<Track>>;
+    deleteTrack(id: string): Nullable<Track> | Promise<Nullable<Track>>;
+    createUser(createUserInput: CreateUserInput): Nullable<User> | Promise<Nullable<User>>;
+    updateUser(updateUserInput: UpdateUserInput): Nullable<User> | Promise<Nullable<User>>;
+    removeUser(id: string): Nullable<User> | Promise<Nullable<User>>;
 }
 
 export interface Artist {

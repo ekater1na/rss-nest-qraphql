@@ -22,7 +22,7 @@ export class ArtistsService {
     });
   }
 
-  create(createArtistInput: CreateArtistInput) {
+  async create(createArtistInput: CreateArtistInput, context: any) {
     return 'This action adds a new artist';
   }
 
@@ -39,7 +39,7 @@ export class ArtistsService {
     return res.data;
   }
 
-  update(id: string, updateArtistInput: UpdateArtistInput) {
+  async update(id: string, updateArtistInput: UpdateArtistInput, context: any) {
     return `This action updates a #${id} artist`;
   }
 

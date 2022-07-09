@@ -8,8 +8,11 @@ export class GenresResolver {
   constructor(private readonly genresService: GenresService) {}
 
   @Mutation('createGenre')
-  create(@Args('createGenreInput') createGenreInput: CreateGenreInput) {
-    return this.genresService.create(createGenreInput);
+  create(
+    @Args('createGenreInput') createGenreInput: CreateGenreInput,
+    @Context() context: any,
+  ) {
+    return this.genresService.create(createGenreInput, context);
   }
 
   @Query('genres')
@@ -26,8 +29,15 @@ export class GenresResolver {
   }
 
   @Mutation('updateGenre')
-  update(@Args('updateGenreInput') updateGenreInput: UpdateGenreInput) {
-    return this.genresService.update(updateGenreInput.id, updateGenreInput);
+  update(
+    @Args('updateGenreInput') updateGenreInput: UpdateGenreInput,
+    @Context() context: any,
+  ) {
+    return this.genresService.update(
+      updateGenreInput.id,
+      updateGenreInput,
+      context,
+    );
   }
 
   @Mutation('deleteGenre')

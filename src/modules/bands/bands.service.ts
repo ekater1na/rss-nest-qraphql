@@ -22,7 +22,7 @@ export class BandsService {
     });
   }
 
-  create(createBandInput: CreateBandInput) {
+ async create(createBandInput: CreateBandInput, context: any) {
     return 'This action adds a new band';
   }
 
@@ -39,7 +39,7 @@ export class BandsService {
     return res.data;
   }
 
-  update(id: string, updateBandInput: UpdateBandInput) {
+ async update(id: string, updateBandInput: UpdateBandInput, context: any) {
     return `This action updates a #${id} band`;
   }
 

@@ -20,8 +20,11 @@ export class ArtistsResolver {
   ) {}
 
   @Mutation('createArtist')
-  create(@Args('createArtistInput') createArtistInput: CreateArtistInput) {
-    return this.artistsService.create(createArtistInput);
+  create(
+    @Args('createArtistInput') createArtistInput: CreateArtistInput,
+    @Context() context: any,
+  ) {
+    return this.artistsService.create(createArtistInput, context);
   }
 
   @Query('artists')
@@ -38,8 +41,15 @@ export class ArtistsResolver {
   }
 
   @Mutation('updateArtist')
-  update(@Args('updateArtistInput') updateArtistInput: UpdateArtistInput) {
-    return this.artistsService.update(updateArtistInput.id, updateArtistInput);
+  update(
+    @Args('updateArtistInput') updateArtistInput: UpdateArtistInput,
+    @Context() context: any,
+  ) {
+    return this.artistsService.update(
+      updateArtistInput.id,
+      updateArtistInput,
+      context,
+    );
   }
 
   @Mutation('deleteArtist')

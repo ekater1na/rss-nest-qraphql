@@ -22,7 +22,7 @@ export class GenresService {
     });
   }
 
-  create(createGenreInput: CreateGenreInput) {
+  async create(createGenreInput: CreateGenreInput, context: any) {
     return 'This action adds a new genre';
   }
 
@@ -39,7 +39,7 @@ export class GenresService {
     return res.data;
   }
 
-  update(id: string, updateGenreInput: UpdateGenreInput) {
+  async update(id: string, updateGenreInput: UpdateGenreInput, context: any) {
     return `This action updates a #${id} genre`;
   }
 

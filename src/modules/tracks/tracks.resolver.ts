@@ -24,8 +24,11 @@ export class TracksResolver {
   ) {}
 
   @Mutation('createTrack')
-  create(@Args('createTrackInput') createTrackInput: CreateTrackInput) {
-    return this.tracksService.create(createTrackInput);
+  create(
+    @Args('createTrackInput') createTrackInput: CreateTrackInput,
+    @Context() context: any,
+  ) {
+    return this.tracksService.create(createTrackInput, context);
   }
 
   @Query('tracks')
@@ -42,8 +45,15 @@ export class TracksResolver {
   }
 
   @Mutation('updateTrack')
-  update(@Args('updateTrackInput') updateTrackInput: UpdateTrackInput) {
-    return this.tracksService.update(updateTrackInput.id, updateTrackInput);
+  update(
+    @Args('updateTrackInput') updateTrackInput: UpdateTrackInput,
+    @Context() context: any,
+  ) {
+    return this.tracksService.update(
+      updateTrackInput.id,
+      updateTrackInput,
+      context,
+    );
   }
 
   @Mutation('deleteTrack')

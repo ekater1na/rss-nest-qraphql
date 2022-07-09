@@ -22,7 +22,7 @@ export class TracksService {
     });
   }
 
-  create(createTrackInput: CreateTrackInput) {
+  async create(createTrackInput: CreateTrackInput, context: any) {
     return 'This action adds a new track';
   }
 
@@ -39,7 +39,7 @@ export class TracksService {
     return res.data;
   }
 
-  update(id: string, updateTrackInput: UpdateTrackInput) {
+  async update(id: string, updateTrackInput: UpdateTrackInput, context: any) {
     return `This action updates a #${id} track`;
   }
 
