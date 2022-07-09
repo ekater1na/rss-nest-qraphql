@@ -48,8 +48,8 @@ export class FavouritesResolver {
   }
 
   @Mutation('removeFavourites')
-  remove(@Args('id') id: string) {
-    return this.favouritesService.remove(id);
+  remove(@Args('id') id: string, @Context() context: any) {
+    return this.favouritesService.remove(id, context);
   }
 
   @Resolver()

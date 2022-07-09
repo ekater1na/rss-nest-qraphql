@@ -27,5 +27,5 @@ type Query {
 type Mutation {
   createArtist(createArtistInput: CreateArtistInput!): Artist
   updateArtist(updateArtistInput: UpdateArtistInput!): Artist
-  removeArtist(d: ID!): Artist
+  deleteArtist(id: ID!): Artist
 }

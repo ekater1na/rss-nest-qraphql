@@ -26,5 +26,5 @@ type Query {
 type Mutation {
   createTrack(createTrackInput: CreateTrackInput!): Track
   updateTrack(updateTrackInput: UpdateTrackInput!): Track
-  removeTrack(d: ID!): Track
+  deleteTrack(id: ID!): Track
 }

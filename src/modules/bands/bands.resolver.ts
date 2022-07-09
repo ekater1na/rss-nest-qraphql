@@ -5,6 +5,7 @@ import {
   Args,
   ResolveField,
   Parent,
+  Context,
 } from '@nestjs/graphql';
 import { GenresService } from '../genres/genres.service';
 import { BandsService } from './bands.service';
@@ -41,9 +42,9 @@ export class BandsResolver {
     return this.bandsService.update(updateBandInput.id, updateBandInput);
   }
 
-  @Mutation('removeBand')
-  remove(@Args('id') id: string) {
-    return this.bandsService.remove(id);
+  @Mutation('deleteBand')
+  remove(@Args('id') id: string, @Context() context: any) {
+    return this.bandsService.remove(id, context);
   }
 
   @Resolver()

@@ -23,5 +23,5 @@ type Query {
 type Mutation {
   createFavourites(createFavouritesInput: CreateFavouritesInput!): Favourites
   updateFavourites(updateFavouritesInput: UpdateFavouritesInput!): Favourites
-  removeFavourites(d: ID!): Favourites
+  removeFavourites(id: ID!): Favourites
 }

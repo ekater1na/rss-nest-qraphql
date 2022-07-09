@@ -30,5 +30,5 @@ type Query {
 type Mutation {
   createBand(createBandInput: CreateBandInput!): Band
   updateBand(updateBandInput: UpdateBandInput!): Band
-  removeBand(d: ID!): Band
+  deleteBand(id: ID!): Band
 }

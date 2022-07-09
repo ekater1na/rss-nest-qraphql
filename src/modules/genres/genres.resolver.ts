@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Context } from '@nestjs/graphql';
 import { GenresService } from './genres.service';
 import { CreateGenreInput } from './dto/create-genre.input';
 import { UpdateGenreInput } from './dto/update-genre.input';
@@ -30,8 +30,8 @@ export class GenresResolver {
     return this.genresService.update(updateGenreInput.id, updateGenreInput);
   }
 
-  @Mutation('removeGenre')
-  remove(@Args('id') id: string) {
-    return this.genresService.remove(id);
+  @Mutation('deleteGenre')
+  remove(@Args('id') id: string, @Context() context: any) {
+    return this.genresService.remove(id, context);
   }
 }

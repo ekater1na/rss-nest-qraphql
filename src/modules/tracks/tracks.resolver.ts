@@ -5,6 +5,7 @@ import {
   Query,
   Mutation,
   Args,
+  Context,
 } from '@nestjs/graphql';
 import { TracksService } from './tracks.service';
 import { CreateTrackInput } from './dto/create-track.input';
@@ -45,9 +46,9 @@ export class TracksResolver {
     return this.tracksService.update(updateTrackInput.id, updateTrackInput);
   }
 
-  @Mutation('removeTrack')
-  remove(@Args('id') id: string) {
-    return this.tracksService.remove(id);
+  @Mutation('deleteTrack')
+  remove(@Args('id') id: string, @Context() context: any) {
+    return this.tracksService.remove(id, context);
   }
 
   @Resolver()
