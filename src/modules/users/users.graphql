@@ -10,9 +10,11 @@ type JWT {
   jwt: String
 }
 
-input CreateUserInput {
-  # Example field (placeholder)
-  exampleField: Int
+input RegisterUserInput {
+ firstName: String!
+ lastName: String!
+ password: String!
+ email: String!
 }
 
 input UpdateUserInput {
@@ -25,7 +27,7 @@ type Query {
 }
 
 type Mutation {
-  createUser(createUserInput: CreateUserInput!): User
+  registerUser(registerUserInput: RegisterUserInput!): User
   updateUser(updateUserInput: UpdateUserInput!): User
   removeUser(id: ID!): User
 }

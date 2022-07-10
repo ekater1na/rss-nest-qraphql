@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import { User } from 'src/graphql';
-import { CreateUserInput } from './dto/create-user.input';
+import { RegisterUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 
 @Injectable()
@@ -14,8 +14,14 @@ export class UsersService {
     });
   }
 
-  async create(createUserInput: CreateUserInput, context: any) {
-    return 'This action adds a new user';
+  async create(registerUserInput: RegisterUserInput) {
+    try {
+      const res = await this.client.post(`/register`, registerUserInput);
+      console.log(`😉 User was created`);
+      return res.data;
+    } catch (err) {
+      console.log(err.response.data);
+    }
   }
 
   async getJwt(email: string, password: string) {

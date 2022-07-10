@@ -1,1 +1,1 @@
-export class CreateUserInput {}
+export class RegisterUserInput {}
