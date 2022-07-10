@@ -41,7 +41,7 @@ input UpdateTrackInput {
 }
 
 type Query {
-  tracks(limit: Int, offset: Int): [Track]!
+  tracks(limit: Int, offset: Int): [Track]
   track(id: ID!): Track
 }
 

@@ -111,7 +111,7 @@ query {
     genres {
       name
       country
-    }
+    }    
     image
   }
 }
@@ -136,7 +136,7 @@ query {
     genres {
       name
       country
-    }
+    }    
     image
   }
 }
@@ -243,7 +243,7 @@ query {
     genres {
       name
       country
-    }
+    }   
   }
 }
 ```
@@ -309,7 +309,7 @@ query {
 ```bash
 # track query example (replace <ID> with your id, f.e. 62caa13e07f87f02470888b4)
 query {
- track (id:"62bc7405ad3ba3a9feac8123") {
+ track (id:"<ID>") {
   title
   album {
     name
