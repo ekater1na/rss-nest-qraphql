@@ -34,7 +34,7 @@ export class ArtistsService {
           authorization,
         },
       });
-      console.log(`🔥 Item was created`);
+      console.log(`🔥 Artist was created`);
       return res.data;
     } catch (err) {
       console.log(err.response.data);
@@ -66,7 +66,7 @@ export class ArtistsService {
           authorization,
         },
       });
-      console.log(`🎉 Item with id ${id} was updated`);
+      console.log(`🎉 Artist with id ${id} was updated`);
       return res.data;
     } catch (err) {
       console.log(err.response.data);
@@ -85,7 +85,7 @@ export class ArtistsService {
           authorization,
         },
       });
-      console.log(`🔄 Item with id ${id} was deleted`);
+      console.log(`🔄 Artist with id ${id} was deleted`);
       return res;
     } catch (err) {
       console.log(err.response.data);

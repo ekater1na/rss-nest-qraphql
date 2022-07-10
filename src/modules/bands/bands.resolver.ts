@@ -59,8 +59,8 @@ export class BandsResolver {
 
   @Resolver()
   @ResolveField()
-  async genres(@Parent() track) {
-    const { genresIds } = track;
+  async genres(@Parent() band) {
+    const { genresIds } = band;
     return await Promise.all(
       genresIds.map((id) => {
         return this.genresService.findOne(id);

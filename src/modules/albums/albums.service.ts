@@ -34,7 +34,7 @@ export class AlbumsService {
           authorization,
         },
       });
-      console.log(`🔥 Item was created`);
+      console.log(`🔥 Album was created`);
       return res.data;
     } catch (err) {
       console.log(err.response.data);
@@ -65,7 +65,7 @@ export class AlbumsService {
           authorization,
         },
       });
-      console.log(`🎉 Item with id ${id} was updated`);
+      console.log(`🎉 Album with id ${id} was updated`);
 
       return res.data;
     } catch (err) {
@@ -85,7 +85,7 @@ export class AlbumsService {
           authorization,
         },
       });
-      console.log(`🔄 Item with id ${id} was deleted`);
+      console.log(`🔄 Album with id ${id} was deleted`);
       return res.data;
     } catch (err) {
       console.log(err.response.data);

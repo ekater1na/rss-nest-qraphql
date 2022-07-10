@@ -34,7 +34,7 @@ export class TracksService {
           authorization,
         },
       });
-      console.log(`🔥 Item was created`);
+      console.log(`🔥 Track was created`);
       return res.data;
     } catch (err) {
       console.log(err.response.data);
@@ -66,7 +66,7 @@ export class TracksService {
           authorization,
         },
       });
-      console.log(`🎉 Item with id ${id} was updated`);
+      console.log(`🎉 Track with id ${id} was updated`);
       return res.data;
     } catch (err) {
       console.log(err.response.data);
@@ -85,7 +85,7 @@ export class TracksService {
           authorization,
         },
       });
-      console.log(`🔄 Item with id ${id} was deleted`);
+      console.log(`🔄 Track with id ${id} was deleted`);
       return res;
     } catch (err) {
       console.log(err.response.data);
