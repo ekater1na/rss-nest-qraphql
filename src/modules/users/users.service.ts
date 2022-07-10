@@ -18,7 +18,7 @@ export class UsersService {
     try {
       const res = await this.client.post(`/register`, registerUserInput);
       console.log(`😉 User was created`);
-      return res.data;
+      return { ...res.data, secondName: res.data.lastName };
     } catch (err) {
       console.log(err.response.data);
     }
@@ -31,7 +31,7 @@ export class UsersService {
 
   async findUser(id: string): Promise<User> {
     const res = await this.client.get(`/${id}`);
-    return res.data;
+    return { ...res.data, secondName: res.data.lastName };
   }
 
   async update(id: string, updateUserInput: UpdateUserInput, context: any) {

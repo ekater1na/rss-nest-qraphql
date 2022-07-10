@@ -29,13 +29,13 @@ export class AlbumsService {
         console.log('🙏 Please add JWT token in HTTP Header');
         return null;
       }
-      const { res } = await this.client.post(`/`, createAlbumInput, {
+      const res = await this.client.post(`/`, createAlbumInput, {
         headers: {
           authorization,
         },
       });
       console.log(`🔥 Item was created`);
-      return res;
+      return res.data;
     } catch (err) {
       console.log(err.response.data);
     }
