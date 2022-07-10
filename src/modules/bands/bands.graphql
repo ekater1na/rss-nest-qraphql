@@ -2,19 +2,23 @@ type Band {
   id: ID!
   name: String
   origin: String
-  # members: [Member]
+  members: [Member]
   website: String
   genres: [Genre]
 }
 
 type Member {
-  artist: String
+  firstName: String
+  secondName: String
+  middleName: String
   instrument: String
   years: [String]
 }
 
 input MemberInput {
-  artist: String
+  firstName: String
+  secondName: String
+  middleName: String
   instrument: String
   years: [String]
 }
@@ -22,7 +26,7 @@ input MemberInput {
 input CreateBandInput {
   name: String!
   origin: String
-  # members: [Member]
+  members: [MemberInput]
   website: String
   genresIds: [ID]
 }
@@ -31,7 +35,7 @@ input UpdateBandInput {
   id: ID!
   name: String
   origin: String
-  # members: [Member]
+  members: [MemberInput]
   website: String
   genresIds: [ID]
 }
