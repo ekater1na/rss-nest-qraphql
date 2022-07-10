@@ -25,12 +25,24 @@ export class FavouritesResolver {
     private readonly genresService: GenresService,
   ) {}
 
-  @Mutation('createFavourites')
-  create(
-    @Args('createFavouritesInput') createFavouritesInput: CreateFavouritesInput,
-    @Context() context: any,
-  ) {
-    return this.favouritesService.create(createFavouritesInput, context);
+  @Mutation('addTrackToFavourites')
+  addTrackToFavourites(@Args('id') id: string, @Context() context: any) {
+    return this.favouritesService.addTrackToFavourites(id, context);
+  }
+
+  @Mutation('addBandToFavourites')
+  addBandToFavourites(@Args('id') id: string, @Context() context: any) {
+    return this.favouritesService.addBandToFavourites(id, context);
+  }
+
+  @Mutation('addArtistToFavourites')
+  addArtistToFavourites(@Args('id') id: string, @Context() context: any) {
+    return this.favouritesService.addArtistToFavourites(id, context);
+  }
+
+  @Mutation('addGenreToFavourites')
+  addGenreToFavourites(@Args('id') id: string, @Context() context: any) {
+    return this.favouritesService.addGenreToFavourites(id, context);
   }
 
   @Query('favourites')

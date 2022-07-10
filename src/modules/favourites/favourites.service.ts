@@ -12,21 +12,119 @@ export class FavouritesService {
       baseURL: process.env.FAVORITES_URL,
     });
   }
-  // Favourites
+
   async findAll(context): Promise<any[]> {
     const { authorization } = context.req.headers;
-    const { res } = await this.client.get('/', {
+    const res = await this.client.get('/', {
       headers: {
         authorization,
       },
     });
-    console.log(context.req.headers.authorization);
-
-    return res;
+    return res.data;
   }
 
-  async create(createFavouriteInput: CreateFavouritesInput, context: any) {
-    return 'This action adds a new favourites';
+  async addTrackToFavourites(id: string, context: any) {
+    try {
+      const { authorization } = context.req.headers;
+      if (!authorization) {
+        console.log('🙏 Please add JWT token in HTTP Header');
+        return null;
+      }
+      const res = await this.client.put(
+        `/add`,
+        {
+          id,
+          type: 'tracks',
+        },
+        {
+          headers: {
+            authorization,
+          },
+        },
+      );
+      console.log(`⭐ Track was added to favourites`);
+      return res.data;
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  }
+
+  async addBandToFavourites(id: string, context: any) {
+    try {
+      const { authorization } = context.req.headers;
+      if (!authorization) {
+        console.log('🙏 Please add JWT token in HTTP Header');
+        return null;
+      }
+      const res = await this.client.put(
+        `/add`,
+        {
+          id,
+          type: 'bands',
+        },
+        {
+          headers: {
+            authorization,
+          },
+        },
+      );
+      console.log(`👍 Band was added to favourites`);
+      return res.data;
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  }
+
+  async addArtistToFavourites(id: string, context: any) {
+    try {
+      const { authorization } = context.req.headers;
+      if (!authorization) {
+        console.log('🙏 Please add JWT token in HTTP Header');
+        return null;
+      }
+      const res = await this.client.put(
+        `/add`,
+        {
+          id,
+          type: 'artists',
+        },
+        {
+          headers: {
+            authorization,
+          },
+        },
+      );
+      console.log(`❤️  Artist was added to favourites`);
+      return res.data;
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  }
+
+  async addGenreToFavourites(id: string, context: any) {
+    try {
+      const { authorization } = context.req.headers;
+      if (!authorization) {
+        console.log('🙏 Please add JWT token in HTTP Header');
+        return null;
+      }
+      const res = await this.client.put(
+        `/add`,
+        {
+          id,
+          type: 'genres',
+        },
+        {
+          headers: {
+            authorization,
+          },
+        },
+      );
+      console.log(`🎸 Genre was added to favourites`);
+      return res.data;
+    } catch (err) {
+      console.log(err.response.data);
+    }
   }
 
   async update(
