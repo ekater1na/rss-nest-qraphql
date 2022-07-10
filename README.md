@@ -27,7 +27,7 @@
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 
-[GraphQL + Nest](https://docs.nestjs.com/graphql/quick-start)
+[GraphQL + Nest](https://docs.nestjs.com/graphql/quick-start) app with schema-first approach
 ## Preparations
 
 - Run [microservices](https://github.com/rolling-scopes-school/node-graphql-service)
@@ -37,7 +37,6 @@
 ```bash
 # clone repo
 $ git clone https://github.com/ekater1na/rss-nest-qraphql.git
-
 ```
 ## Installation
 
@@ -63,6 +62,113 @@ $ npm run start:prod
 
 GraphQL Playground will be available here: [http://localhost:4000/graphql](http://localhost:4000/graphql).
 
-## License
 
-Nest is [MIT licensed](LICENSE).
+## Workflow
+
+- Create JWT token
+
+
+```bash
+# jwt query example
+query{
+ jwt(email: "met9129@gmail.com", password: "118649qwe") {
+    jwt
+  }
+}
+```
+- Add generated JWT TOKEN to HTTP Header in GraphQL Playground: 
+
+```bash
+# HTTP Header example (replace <TOKEN> with your generated token)
+{"authorization": "Bearer <TOKEN>"
+}
+```
+- Add query: 
+
+```bash
+# artists query example
+query{
+  artists {
+    firstName
+    secondName
+    middleName
+    birthDate
+    birthPlace
+    country
+    bands {
+      name
+      origin      
+    }
+    instruments
+  }
+}
+```
+
+```bash
+# artist query example (replace <ID> with your id, f.e. 62caa13e07f87f02470888b4)
+query{
+  artist(id: "<ID>") {
+    firstName
+    secondName
+    middleName
+    birthDate
+    birthPlace
+    country
+    bands {
+      name
+      origin      
+    }
+    instruments
+  }
+}
+```
+
+- Add mutation: 
+
+```bash
+# createArtist mutation example
+mutation{
+  createArtist(createArtistInput: {firstName: "Bruno", secondName:"Mars", country: "Honolulu, Hawaii, U.S."}) {
+    firstName
+    secondName
+    middleName
+    birthDate
+    birthPlace
+    country
+    bands {
+      name
+      origin      
+    }
+    instruments
+  }  
+}
+```
+
+```bash
+# updateArtist mutation example (replace <ID> with your id, f.e. 62caa13e07f87f02470888b4)
+mutation{
+  updateArtist(updateArtistInput: {id: "<ID>", country: "USA" , birthPlace: "Honolulu, Hawaii, U.S.", birthDate: "10/08/1985"}) {
+    firstName
+    secondName
+    middleName
+    birthDate
+    birthPlace
+    country
+    bands {
+      name
+      origin      
+    }
+    instruments
+  }  
+}
+```
+
+```bash
+# deleteArtist mutation example (replace <ID> with your id, f.e. 62caa13e07f87f02470888b4)
+mutation{
+  deleteArtist(id: "<ID>") {
+    firstName
+    secondName
+  }
+}
+```
